@@ -1,7 +1,5 @@
 HELP.md
 target/
-.mvn/
-bin/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
@@ -20,9 +18,6 @@ bin/
 *.iws
 *.iml
 *.ipr
-.gradle/
-mvnw
-mvnw.cmd
 
 ### NetBeans ###
 /nbproject/private/
