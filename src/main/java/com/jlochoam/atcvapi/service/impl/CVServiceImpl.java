@@ -1,0 +1,56 @@
+package com.jlochoam.atcvapi.service.impl;
+
+import com.jlochoam.atcvapi.exception.CVNotFoundException;
+import com.jlochoam.atcvapi.exception.InvalidFormatException;
+import com.jlochoam.atcvapi.exception.MissingRequiredFieldException;
+import com.jlochoam.atcvapi.model.PostResponse;
+import com.jlochoam.atcvapi.model.cv.CV;
+import com.jlochoam.atcvapi.repository.CVRepository;
+import com.jlochoam.atcvapi.service.CVService;
+import com.jlochoam.atcvapi.service.CVValidation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class CVServiceImpl implements CVService {
+    @Autowired
+    private CVRepository cvRepository;
+
+    @Autowired
+    private CVValidation cvValidation;
+
+    @Override
+    public List<CV> getCVs() {
+        return cvRepository.findAll();
+    }
+
+    @Override
+    public CV getCVByResourceId(String resourceId) throws CVNotFoundException {
+        Optional<CV> foundCV = cvRepository.findById(resourceId);
+        if(foundCV.isPresent()) {
+            return foundCV.get();
+        }
+        throw new CVNotFoundException(String.format("Curriculum Vitae with id %s could not be found.", resourceId));
+    }
+
+    @Override
+    public PostResponse createCV(CV cv) throws MissingRequiredFieldException, InvalidFormatException {
+        cvValidation.validate(cv);
+        CV createdCv = cvRepository.save(cv);
+        return new PostResponse(createdCv.getId());
+    }
+
+    @Override
+    public void updateCV(CV cv, String resourceId) throws MissingRequiredFieldException, CVNotFoundException, InvalidFormatException {
+        if(cvRepository.existsById(resourceId)) {
+            cvValidation.validate(cv);
+            cv.setId(resourceId);
+            cvRepository.save(cv);
+            return;
+        }
+        throw new CVNotFoundException(String.format("Curriculum Vitae with id %s could not be found.", resourceId));
+    }
+}

@@ -1,0 +1,98 @@
+personalData: {
+    "firstName": String,
+    "lastName": String,
+    "job": String,
+    "city": String,
+    "country": String,
+    "email": String,
+    "phoneNumber": String,
+    "skills": [
+        {
+            "name": String,
+            "percentage": byte
+        },
+        {
+            "name": String,
+            "percentage": byte
+        }
+    ],
+    "languages": [
+        {
+            "name": String,
+            "percentage": byte
+        },
+        {
+            "name": String,
+            "percentage": byte
+        }
+    ],
+    "workexperience": [
+        {
+            "title": String,
+            "company": String,
+            "from": Date.format (MMM AAAA),
+            "to": Date.format (MMM AAAA),
+            "current": Boolean,
+            "description": String
+        },
+        {
+            "title": String,
+            "company": String,
+            "from": Date.format (MMM AAAA),
+            "to": Date.format (MMM AAAA),
+            "current": Boolean,
+            "description": String
+        }
+    ],
+    "education": [
+        {
+            "name": String,
+            "career": String,
+            "from": Date.format(AAAA),
+            "to": Date.format(AAAA),
+            "degree": Enum (Bachelor, Master, Ph)
+        }
+    ],
+    "challenges": [
+        {
+            "name": String,
+            "date": Date.format(MMM AAAA),
+            "description": String,
+            "url": String
+        }
+    ],
+    "socialMedia": {
+        "facebook": String, (default null)
+        "instagram": String,
+        "snapchat": String,
+        "pinterest": String,
+        "twitter": String,
+        "linkedin": String
+    },
+    "config": {
+        "color": String, (possible enum)
+        "fontFamily": String, (possible enum)
+        "genericFamily": String (possible enum)
+    }
+}
+
+postResponse_id: {
+    "id": String
+}
+
+postResponse_id: {
+    "resourceId": String
+}
+
+errorResponse: {
+    "timestamp": Date,
+    "statusCode": Integer,
+    "message": String,
+    "details": [
+        String1,
+        .
+        .
+        .
+        StringN
+    ]
+}
