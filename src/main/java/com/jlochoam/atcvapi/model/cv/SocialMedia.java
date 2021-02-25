@@ -6,7 +6,7 @@ public class SocialMedia {
     private String snapchat;
     private String pinterest;
     private String twitter;
-    private String linkedIn;
+    private String linkedin;
 
     public SocialMedia() {}
 
@@ -50,11 +50,11 @@ public class SocialMedia {
         this.twitter = twitter;
     }
 
-    public String getLinkedIn() {
-        return this.linkedIn;
+    public String getLinkedin() {
+        return this.linkedin;
     }
 
-    public void setLinkedIn(String linkedIn) {
-        this.linkedIn = linkedIn;
+    public void setLinkedin(String linkedin) {
+        this.linkedin = linkedin;
     }
 }
