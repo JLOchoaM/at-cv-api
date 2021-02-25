@@ -1,22 +1,22 @@
 package com.jlochoam.atcvapi.model.cv;
 
 public class Config {
-    private String fontColor;
+    private String color;
     private String fontFamily;
     private String genericFamily;
 
-    public Config(String fontColor, String fontFamily, String genericFamily) {
-        this.fontColor = fontColor;
+    public Config(String color, String fontFamily, String genericFamily) {
+        this.color = color;
         this.fontFamily = fontFamily;
         this.genericFamily = genericFamily;
     }
 
-    public String getFontColor() {
-        return this.fontColor;
+    public String getColor() {
+        return this.color;
     }
 
-    public void setFontColor(String fontColor) {
-        this.fontColor = fontColor;
+    public void setColor(String color) {
+        this.color = color;
     }
 
     public String getFontFamily() {
