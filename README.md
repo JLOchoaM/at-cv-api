@@ -7,4 +7,4 @@ Link to the web site which consumes the API: https://cv-at-app.herokuapp.com/
 
 Link to my deployed API: https://jlom-at-cv-api.herokuapp.com/
 
-Link to my generated Resume from the web site and my API: https://cv-at-app.herokuapp.com/curriculum/6037224ec69fc463fc1265d9
+Link to my generated Resume from the web site and my API: https://cv-at-app.herokuapp.com/curriculum/60ab52ad830ceb131a90afd9
