@@ -14,7 +14,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/cv-api/cv")
+@RequestMapping("/api/v1/cv")
 public class CVController {
 
     @Autowired
