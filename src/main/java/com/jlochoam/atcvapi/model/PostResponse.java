@@ -1,17 +1,12 @@
 package com.jlochoam.atcvapi.model;
 
-import java.util.Date;
-import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
+@AllArgsConstructor
+@Getter
 public class PostResponse{
-    private String resourceId;
 
-    public PostResponse(String resourceId) {
-        super();
-        this.resourceId = resourceId;
-    }
+    private final String resourceId;
 
-    public String getResourceId() {
-        return this.resourceId;
-    }
 }
