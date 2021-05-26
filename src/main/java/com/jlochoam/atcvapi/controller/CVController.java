@@ -23,14 +23,14 @@ public class CVController {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<CV> getCVs() {
-        return cvService.getCVs();
+        return cvService.getAllCvs();
     }
 
     @GetMapping("/{resourceId}")
     @ResponseStatus(HttpStatus.OK)
     public CV getCVByResourceId(@PathVariable String resourceId) {
         try {
-            return cvService.getCVByResourceId(resourceId);
+            return cvService.getCvByResourceId(resourceId);
         }
         catch(CVNotFoundException cvnfe) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, cvnfe.getMessage());
@@ -41,7 +41,7 @@ public class CVController {
     @ResponseStatus(HttpStatus.CREATED)
     public PostResponse createCV(@RequestBody CV newCv) {
         try {
-            return cvService.createCV(newCv);
+            return cvService.createCv(newCv);
         }
         catch (MissingRequiredFieldException | InvalidFormatException err) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, err.getMessage());
@@ -52,7 +52,7 @@ public class CVController {
     @ResponseStatus(HttpStatus.OK)
     public void updateCV(@RequestBody CV cv, @PathVariable String resourceId) {
         try {
-            cvService.updateCV(cv, resourceId);
+            cvService.updateCv(cv, resourceId);
         }
         catch(CVNotFoundException cvnfe) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, cvnfe.getMessage());

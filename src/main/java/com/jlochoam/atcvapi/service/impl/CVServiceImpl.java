@@ -7,7 +7,7 @@ import com.jlochoam.atcvapi.model.PostResponse;
 import com.jlochoam.atcvapi.model.cv.CV;
 import com.jlochoam.atcvapi.repository.CVRepository;
 import com.jlochoam.atcvapi.service.CVService;
-import com.jlochoam.atcvapi.service.CVValidation;
+import com.jlochoam.atcvapi.validator.CvValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,15 +20,15 @@ public class CVServiceImpl implements CVService {
     private CVRepository cvRepository;
 
     @Autowired
-    private CVValidation cvValidation;
+    private CvValidator cvValidator;
 
     @Override
-    public List<CV> getCVs() {
+    public List<CV> getAllCvs() {
         return cvRepository.findAll();
     }
 
     @Override
-    public CV getCVByResourceId(String resourceId) throws CVNotFoundException {
+    public CV getCvByResourceId(String resourceId) {
         Optional<CV> foundCV = cvRepository.findById(resourceId);
         if(foundCV.isPresent()) {
             return foundCV.get();
@@ -37,16 +37,16 @@ public class CVServiceImpl implements CVService {
     }
 
     @Override
-    public PostResponse createCV(CV cv) throws MissingRequiredFieldException, InvalidFormatException {
-        cvValidation.validate(cv);
+    public PostResponse createCv(CV cv) {
+        cvValidator.validate(cv);
         CV createdCv = cvRepository.save(cv);
         return new PostResponse(createdCv.getId());
     }
 
     @Override
-    public void updateCV(CV cv, String resourceId) throws MissingRequiredFieldException, CVNotFoundException, InvalidFormatException {
+    public void updateCv(CV cv, String resourceId) throws MissingRequiredFieldException, CVNotFoundException, InvalidFormatException {
         if(cvRepository.existsById(resourceId)) {
-            cvValidation.validate(cv);
+            cvValidator.validate(cv);
             cv.setId(resourceId);
             cvRepository.save(cv);
             return;
