@@ -8,7 +8,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Getter
 public class Education {
-    private final String name;
+    private final String schoolName;
     private final String career;
     private final Date from;
     private final Date to;
